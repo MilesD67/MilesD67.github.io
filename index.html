@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Miles's Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: black;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .project {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            transition: transform 0.3s;
+        }
+
+        .project:hover {
+            transform: scale(1.05);
+            border-color: #4CAF50;
+        }
+
+        .project img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .view-project {
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .view-project:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* ---------- MODAL ---------- */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 20px;
+            width: 85%;
+            max-width: 900px;
+            border-radius: 8px;
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        pre {
+            background: #1e1e1e;
+            color: #dcdcdc;
+            padding: 15px;
+            overflow-x: auto;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Miles Dale</h1>
+    <p>Web Developer | Designer | Creator</p>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section id="about">
+    <h2>About Me</h2>
+    <p>
+        Hi! I'm Miles Dale, a passionate developer and designer who enjoys
+        building interactive and creative projects.
+    </p>
+</section>
+
+<section id="projects">
+    <h2>My Projects</h2>
+
+    <div class="projects">
+
+        <!-- AI ESCAPE GAME with modal button -->
+        <div class="project">
+            <img src="https://escapetheroom.com/phoenix/wp-content/uploads/sites/19/2018/11/Escape-the-room-AZ-OG-1.jpg" alt="AI Escape Game" />
+            <h3>AI Escape Game</h3>
+            <p>An AI-powered escape room experience.</p>
+            <button class="view-project" id="openAIescapeModal">View Project</button>
+        </div>
+
+        <!-- PYTHON TURTLE MODAL PROJECT -->
+        <div class="project">
+            <img src="https://i.postimg.cc/T29nd7qd/Screenshot-2026-01-15-at-1-07-28-pm.png" alt="Python Turtle Art" />
+            <h3>Python Turtle Art</h3>
+            <p>Generative art created using Python Turtle.</p>
+            <button class="view-project" id="openTurtleModal">View Project</button>
+        </div>
+
+        <!-- DEAR DATA POSTCARD MODAL PROJECT -->
+        <div class="project">
+            <img src="https://i.postimg.cc/W3xChpP0/dear-data.jpg" alt="Dear Data Postcard" />
+            <h3>Dear Data Postcard</h3>
+            <p>Visual storytelling using data.</p>
+            <button class="view-project" id="openDearDataModal">View Project</button>
+        </div>
+
+        <!-- RECIPE WEBSITE MODAL PROJECT -->
+        <div class="project">
+            <img src="https://media.istockphoto.com/id/114397242/photo/cake-mix-in-glass-bowl-with-wooden-spoon.jpg" alt="Recipe Website" />
+            <h3>Recipe Website</h3>
+            <p>A humorous recipe website project.</p>
+            <button class="view-project" id="openRecipeModal">View Project</button>
+        </div>
+
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact Me</h2>
+    <form>
+        <input type="text" placeholder="Your Name" required /><br /><br />
+        <input type="email" placeholder="Your Email" required /><br /><br />
+        <textarea rows="5" placeholder="Your Message" required></textarea><br /><br />
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2026 milesdaleleonardbashfordale. All rights reserved.</p>
+</footer>
+
+<!-- ---------- AI ESCAPE GAME MODAL ---------- -->
+<div id="aiEscapeModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeAIescape">&times;</span>
+        <h2>AI Escape Game</h2>
+        <p>
+            You are the game master of roleplaying a revolution in medieval England.
+            This is based on the glorious revolution from 1688 to 1689.
+            You will learn what it was like back then and how you overcome difficulties.
+            The players must have reasonable suggestions that make sense in this time and not random items or more items than normal.
+            You should only use materials from medieval England.
+            You must recruit troops from around the U.K.
+            By the end you should over take the kingdom and make a new United Kingdom.
+        </p>
+    </div>
+</div>
+
+<!-- ---------- PYTHON TURTLE MODAL ---------- -->
+<div id="turtleModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeTurtle">&times;</span>
+        <h2>Python Turtle Art Code</h2>
+
+        <pre><code>
+import turtle
+
+screen = turtle.Screen()
+tina = turtle.Turtle()
+tina.shape('arrow')
+tina.speed(20)
+
+#
+import turtle
+
+screen = turtle.Screen()
+
+tina=turtle.Turtle()
+tina.shape('arrow')
+tina.penup()
+tina.speed(20)
+tina.left(90)
+tina.forward(100)
+tina.left(90)
+tina.forward(10)
+tina.pendown()
+
+background_color = screen.textinput("background_color", "what color should the back of the logo be?")
+tina.color(background_color)
+tina.right(90)
+tina.begin_fill()
+
+
+for i in range(24):
+    tina.forward(40)
+    tina.circle(10,180)
+    tina.left(195)
+tina.end_fill()
+    
+tina.speed(10)
+tina.begin_fill()
+
+circle_color = screen.textinput("circle_color", "what color should the circle be?")
+tina.color(circle_color)
+
+circle_size = screen.textinput("circle_size", "what size should the circle be?")
+circle_size = int(circle_size)
+
+tina.left(105)
+tina.penup()
+tina.forward(20)
+tina.left(270)
+tina.pendown()
+
+tina.circle(circle_size)
+tina.end_fill()
+
+tina.speed(100)
+
+tina.penup()
+tina.left(70)
+tina.forward(180)
+tina.pendown()
+tina.begin_fill()
+
+flower_color = screen.textinput("flower_color", "what color should the flower be?")
+tina.color(flower_color)
+for i in range(4):
+    tina.left(90)
+    tina.circle(50,180)
+tina.end_fill()
+
+tina.penup()
+tina.forward(70)
+
+tina.goto(-210,-75)
+tina.left(180)
+tina.pendown()
+tina.begin_fill()
+
+smallflower_color = screen.textinput("smallflower_color", "what color should the small flower be?")
+tina.color(smallflower_color)
+
+for i in range(18):
+    tina.forward(10)
+    tina.circle(5,180)
+    tina.left(200)
+tina.end_fill()
+tina.penup()
+tina.goto(-100,120)
+tina.pendown()
+tina.begin_fill()
+
+smallflower2_color = screen.textinput("smallflower2_color", "what color should the second flower be?")
+tina.color(smallflower2_color)
+for i in range(18):
+    tina.forward(10)
+    tina.circle(5,180)
+    tina.left(200)
+tina.end_fill()
+tina.penup()
+tina.forward(300)
+tina.pendown()
+
+amongus_color = screen.textinput("amongus_color", "what color should better among us be?")
+tina.color(amongus_color)
+
+tina.begin_fill()
+tina.speed(5)
+tina.right(270)
+tina.circle(50,180)
+tina.left(5)
+tina.forward(100)
+
+tina.circle(15,180)
+tina.right(90)
+tina.forward(40)
+tina.right(90)
+tina.circle(15,180)
+tina.forward(100)
+tina.back(25)
+tina.right(90)
+tina.end_fill()
+
+tina.begin_fill()
+tina.color("light blue")
+tina.forward(10)
+tina.circle(15,180)
+tina.forward(20)
+tina.circle(15,180)
+tina.forward(10)
+tina.end_fill()
+
+tina.forward(4)
+tina.left(90)
+tina.penup()
+tina.forward(10)
+
+amongus_color = screen.textinput("amongus_color", "what color should better among us backpack be?")
+tina.color(amongus_color)
+tina.circle(50,180)
+tina.pendown()
+
+tina.begin_fill()
+tina.left(180)
+tina.circle(15,180)
+tina.forward(50)
+tina.circle(15,180)
+tina.forward(50)
+tina.end_fill()
+
+tina.penup()
+tina.right(90)
+tina.forward(98)
+tina.left(90)
+tina.forward(20)
+tina.pendown()
+tina.color("black")
+tina.width(5)
+
+tina.left(90)
+tina.forward(10)
+tina.circle(15,180)
+tina.forward(20)
+tina.circle(15,180)
+tina.forward(10)
+tina.left(90)
+
+tina.penup()
+tina.forward(10)
+tina.left(180)
+
+tina.pendown()
+tina.circle(50,180)
+tina.forward(8)
+
+tina.left(180)
+tina.circle(15,180)
+tina.forward(50)
+tina.circle(15,180)
+tina.forward(50)
+tina.back(89)
+
+tina.left(180)
+tina.circle(15,180)
+tina.right(90)
+tina.forward(40)
+tina.right(90)
+tina.circle(15,180)
+tina.forward(75)
+
+tina.penup()
+tina.forward(20)
+tina.pendown()
+tina.color("white")
+tina.width(8)
+tina.forward(5)
+tina.right(90)
+tina.forward(15)
+tina.right(90)
+tina.forward(5)
+tina.right(90)
+tina.forward(15)
+tina.right(90)
+tina.forward(5)
+tina.left(90)
+tina.penup()
+tina.forward(9)
+tina.pendown()
+tina.color("teal")
+tina.circle(9,180)
+tina.forward(22)
+tina.penup()
+tina.forward(100)
+
+
+
+
+
+
+
+        </code></pre>
+    </div>
+</div>
+
+<!-- ---------- DEAR DATA POSTCARD MODAL ---------- -->
+<div id="dearDataModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeDearData">&times;</span>
+        <h2>Dear Data Postcard</h2>
+        <p>
+            In the dear data postcard I create data on what I am curious about how much time I spend in my free time. The question I have is
+            “When I’m not at school what do I do in my free time/when I don't have anything important?”
+            The data is gathered on a pie chart that is on different time periods of the day.
+            One is “school” another is things I do after school such as “basketball” and last is “freetime”.
+            I will need to gather 7 days in the week after school.
+            I will use a piece of paper at that time then use google sheets at the end of the day.
+        </p>
+    </div>
+</div>
+
+<!-- ---------- RECIPE WEBSITE MODAL ---------- -->
+<div id="recipeModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeRecipe">&times;</span>
+        <h2>Recipe Website</h2>
+
+        <img 
+            src="https://i.postimg.cc/ht1GTjMG/Screenshot-2026-01-15-at-2-03-12-pm.png"
+            alt="Recipe Website Screenshot"
+            style="width:100%; border-radius:8px;"
+        >
+    </div>
+</div>
+
+<script>
+    // AI Escape Game Modal
+    const aiEscapeModal = document.getElementById("aiEscapeModal");
+    const openAIescapeBtn = document.getElementById("openAIescapeModal");
+    const closeAIescapeBtn = document.getElementById("closeAIescape");
+
+    openAIescapeBtn.onclick = () => aiEscapeModal.style.display = "block";
+    closeAIescapeBtn.onclick = () => aiEscapeModal.style.display = "none";
+
+    // Turtle Modal
+    const turtleModal = document.getElementById("turtleModal");
+    const openTurtle = document.getElementById("openTurtleModal");
+    const closeTurtle = document.getElementById("closeTurtle");
+
+    openTurtle.onclick = () => turtleModal.style.display = "block";
+    closeTurtle.onclick = () => turtleModal.style.display = "none";
+
+    // Dear Data Postcard Modal
+    const dearDataModal = document.getElementById("dearDataModal");
+    const openDearDataBtn = document.getElementById("openDearDataModal");
+    const closeDearDataBtn = document.getElementById("closeDearData");
+
+    openDearDataBtn.onclick = () => dearDataModal.style.display = "block";
+    closeDearDataBtn.onclick = () => dearDataModal.style.display = "none";
+
+    // Recipe Modal
+    const recipeModal = document.getElementById("recipeModal");
+    const openRecipe = document.getElementById("openRecipeModal");
+    const closeRecipe = document.getElementById("closeRecipe");
+
+    openRecipe.onclick = () => recipeModal.style.display = "block";
+    closeRecipe.onclick = () => recipeModal.style.display = "none";
+
+    // Close modals on outside click
+    window.onclick = (e) => {
+        if (e.target === aiEscapeModal) aiEscapeModal.style.display = "none";
+        if (e.target === turtleModal) turtleModal.style.display = "none";
+        if (e.target === dearDataModal) dearDataModal.style.display = "none";
+        if (e.target === recipeModal) recipeModal.style.display = "none";
+    };
+</script>
+
+</body>
+</html>
